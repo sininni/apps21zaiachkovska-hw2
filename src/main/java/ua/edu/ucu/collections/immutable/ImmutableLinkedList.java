@@ -11,22 +11,25 @@ public final class ImmutableLinkedList implements ImmutableList {
     public ImmutableLinkedList(Object[] elements) {
         objects = Arrays.copyOf(elements, elements.length);
         size = elements.length;
-        Node currNode = new Node(elements[0]);
-        first = currNode;
 
-        if (elements.length > 1) {
-            for (int i = 1; i < elements.length; i++) {
+        if (elements.length > 0) {
+            Node currNode = new Node(elements[0]);
+            first = currNode;
 
-                Node newNode = new Node(elements[i]);
-                currNode.setNext(newNode);
-                newNode.setPrevious(currNode);
-                currNode = newNode;
-                if (i == elements.length - 1) {
-                    last = currNode;
+            if (elements.length > 1) {
+                for (int i = 1; i < elements.length; i++) {
+
+                    Node newNode = new Node(elements[i]);
+                    currNode.setNext(newNode);
+                    newNode.setPrevious(currNode);
+                    currNode = newNode;
+                    if (i == elements.length - 1) {
+                        last = currNode;
+                    }
                 }
-            }
-        } else {
-            last = currNode;
+            } else {
+                last = currNode;
+                }
         }
     }
 
@@ -199,6 +202,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         if (objects.length == 0) {
             return new ImmutableLinkedList();
         }
+
         Object[] newObj = Arrays.copyOfRange(objects, 0, objects.length - 1);
         return new ImmutableLinkedList(newObj);
     }
