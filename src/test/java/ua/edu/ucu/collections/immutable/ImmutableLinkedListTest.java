@@ -24,7 +24,13 @@ public class ImmutableLinkedListTest extends TestCase {
 
     public void testIndexAdd() {
         assertEquals(arr.add(1, "balt").toString(), "ImmutableLinkedList{objects=[are, balt, 23, 2.35]}");
-        assertEquals(arr.add(3, "balt").toString(), "ImmutableLinkedList{objects=[are, 23, 2.35, balt]}");
+    }
+
+    public void testIndexAdd1() {
+        try {
+            arr.add(5, 1);
+        } catch (IllegalArgumentException i) {
+        }
     }
 
     public void testAddAll() {
@@ -37,19 +43,48 @@ public class ImmutableLinkedListTest extends TestCase {
         Object[] obj = {1, "325"};
         assertEquals(arr.addAll(2, obj).toString(), "ImmutableLinkedList{objects=[are, 23, 1, 325, 2.35]}");
         assertEquals(arr.addAll(0, obj).toString(), "ImmutableLinkedList{objects=[1, 325, are, 23, 2.35]}");
-        assertEquals(arr.addAll(3, obj).toString(), "ImmutableLinkedList{objects=[are, 23, 2.35, 1, 325]}");
+    }
+
+    public void testIndexAddAll1() {
+        Object[] obj = {1, "325"};
+        try {
+            arr.addAll(5, obj);
+        } catch (IllegalArgumentException i) {
+        }
     }
 
     public void testGet() {
         assertEquals(arr.get(1), 23);
     }
 
+    public void testGet1() {
+        try {
+            arr.get(5);
+        } catch (IllegalArgumentException i) {
+        }
+    }
+
     public void testRemove() {
         assertEquals(arr.remove(2).toString(), "ImmutableLinkedList{objects=[are, 23]}");
     }
 
+    public void testRemove1() {
+        try {
+            arr.remove(5);
+        } catch (IllegalArgumentException i) {
+        }
+    }
+
+
     public void testSet() {
         assertEquals(arr.set(1, "key").toString(), "ImmutableLinkedList{objects=[are, key, 2.35]}");
+    }
+
+    public void testSet1() {
+        try {
+            arr.set(5, 3);
+        } catch (IllegalArgumentException i) {
+        }
     }
 
     public void testIndexOf() {

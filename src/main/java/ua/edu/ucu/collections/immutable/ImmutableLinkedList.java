@@ -49,6 +49,9 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableList add(int index, Object e) {
+        if (index >= objects.length) {
+            throw new IllegalArgumentException();
+        }
         Object[] newObj = new Object[objects.length + 1];
 
         for (int i = 0; i < index; i++) {
@@ -74,6 +77,9 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableList addAll(int index, Object[] c) {
+        if (index >= objects.length) {
+            throw new IllegalArgumentException();
+        }
         Object[] newObj = new Object[objects.length + c.length];
 
         for  (int i = 0; i < index; i++) {
@@ -102,6 +108,10 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableList remove(int index) {
+        if (index >= objects.length) {
+            throw new IllegalArgumentException();
+        }
+
         Object[] newObj = new Object[objects.length - 1];
         int i = 0;
         for (int j = 0; j < objects.length; j++) {

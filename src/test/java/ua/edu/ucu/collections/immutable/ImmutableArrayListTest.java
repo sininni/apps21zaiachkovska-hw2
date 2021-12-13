@@ -28,10 +28,12 @@ public class ImmutableArrayListTest extends TestCase {
         assertEquals(arr.add(3, "balt").toString(), "ImmutableArrayList{arr=[are, 23, 2.35, balt]}");
     }
 
-//    @Test (expected = IllegalArgumentException.class)
-//    public void testIndexAdd1() {
-//        arr.add(5, 1);
-//    }
+    public void testIndexAdd1() {
+        try {
+            arr.add(5, 1);
+        } catch (IllegalArgumentException i) {
+        }
+    }
 
     public void testAddAll() {
         Object[] obj = {1, "325"};
@@ -43,30 +45,47 @@ public class ImmutableArrayListTest extends TestCase {
         Object[] obj = {1, "325"};
         assertEquals(arr.addAll(2, obj).toString(), "ImmutableArrayList{arr=[are, 23, 1, 325, 2.35]}");
         assertEquals(arr.addAll(0, obj).toString(), "ImmutableArrayList{arr=[1, 325, are, 23, 2.35]}");
-        assertEquals(arr.addAll(3, obj).toString(), "ImmutableArrayList{arr=[are, 23, 2.35, 1, 325]}");
     }
 
-    //    @Test (expected = IllegalArgumentException.class)
-//    public void testIndexAdd1() {
-//        arr.add(5, 1);
-//    }
+    public void testIndexAddAll1() {
+        Object[] obj = {1, "325"};
+        try {
+            arr.addAll(5, obj);
+        } catch (IllegalArgumentException i) {
+        }
+    }
 
     public void testGet() {
         assertEquals(arr.get(1), 23);
     }
 
-    //    @Test (expected = IllegalArgumentException.class)
-//    public void testIndexAdd1() {
-//        arr.add(5, 1);
-//    }
+    public void testGet1() {
+        try {
+            arr.get(5);
+        } catch (IllegalArgumentException i) {
+        }
+    }
 
     public void testRemove() {
         assertEquals(arr.remove(2).toString(), "ImmutableArrayList{arr=[are, 23]}");
     }
 
+    public void testRemove1() {
+        try {
+            arr.remove(5);
+        } catch (IllegalArgumentException i) {
+        }
+    }
 
     public void testSet() {
         assertEquals(arr.set(1, "key").toString(), "ImmutableArrayList{arr=[are, key, 2.35]}");
+    }
+
+    public void testSet1() {
+        try {
+            arr.set(5, 3);
+        } catch (IllegalArgumentException i) {
+        }
     }
 
     public void testIndexOf() {
