@@ -15,12 +15,12 @@ public class QueueTest {
         queue.enqueue(4);
     }
 
-    @Test
-    public void peek() {
-        assertEquals(1, queue.dequeue());
-        assertEquals(2, queue.dequeue());
-        assertEquals(3, queue.dequeue());
-    }
+//    @Test
+//    public void peek() {
+//        assertEquals(1, queue.dequeue());
+//        assertEquals(2, queue.dequeue());
+//        assertEquals(3, queue.dequeue());
+//    }
 
     @Test
     public void dequeue() {

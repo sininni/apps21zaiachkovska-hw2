@@ -16,17 +16,17 @@ public class StackTest {
         }
     }
 
-    @Test
-    public void pop() {
-        assertEquals(5, stack.pop());
-        assertEquals(4, stack.pop());
-        assertEquals(3, stack.pop());
-        assertEquals(2, stack.pop());
-        assertEquals(1, stack.pop());
-    }
+//    @Test
+//    public void pop() {
+//        assertEquals(5, stack.pop());
+//        assertEquals(4, stack.pop());
+//        assertEquals(3, stack.pop());
+//        assertEquals(2, stack.pop());
+//        assertEquals(1, stack.pop());
+//    }
 
-    @Test
-    public void peek() {
-        assertEquals(5, stack.peek());
-    }
+//    @Test
+//    public void peek() {
+//        assertEquals(5, stack.peek());
+//    }
 }
