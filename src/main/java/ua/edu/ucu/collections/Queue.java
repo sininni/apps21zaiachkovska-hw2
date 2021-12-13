@@ -26,4 +26,11 @@ public class Queue {
     public void enqueue(Object e) {
         list = list.addLast(e);
     }
+
+    @Override
+    public String toString() {
+        return "Queue{" +
+                "list=" + list.toString() +
+                '}';
+    }
 }

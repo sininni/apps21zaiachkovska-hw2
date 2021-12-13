@@ -25,4 +25,11 @@ public class Stack {
     public Object peek() {
         return list.getFirst();
     }
+
+    @Override
+    public String toString() {
+        return "Stack{" +
+                "list=" + list.toString() +
+                '}';
+    }
 }

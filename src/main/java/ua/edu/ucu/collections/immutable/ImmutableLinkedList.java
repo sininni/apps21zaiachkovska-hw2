@@ -81,9 +81,8 @@ public final class ImmutableLinkedList implements ImmutableList {
             newObj[index + j] = c[j];
         }
 
-        // do we nedd + 1????
         if (newObj.length > c.length + index) {
-            for (int k = index; index < objects.length; k++) {
+            for (int k = index; k < objects.length; k++) {
                 newObj[k + c.length] = objects[k];
             }
         }
@@ -113,12 +112,12 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableList set(int index, Object e) {
-        if (index >= objects.length) {
-            throw new IllegalArgumentException();
+        if (index < objects.length) {
+            Object[] newArr = Arrays.copyOf(objects, objects.length);
+            newArr[index] = e;
+            return new ImmutableLinkedList(newArr);
         }
-        Object[] newObj = new Object[objects.length];
-        newObj[index] = e;
-        return new ImmutableLinkedList(newObj);
+        throw new IllegalArgumentException();
     }
 
     @Override
@@ -187,14 +186,27 @@ public final class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList removeFirst() {
+        if (objects.length == 0) {
+            return new ImmutableLinkedList();
+        }
 
         // чи треба віднімати 1?
-        Object[] newObj = Arrays.copyOfRange(objects, 1, objects.length - 1);
+        Object[] newObj = Arrays.copyOfRange(objects, 1, objects.length);
         return new ImmutableLinkedList(newObj);
     }
 
     public ImmutableLinkedList removeLast() {
-        Object[] newObj = Arrays.copyOfRange(objects, 0, objects.length - 2);
+        if (objects.length == 0) {
+            return new ImmutableLinkedList();
+        }
+        Object[] newObj = Arrays.copyOfRange(objects, 0, objects.length - 1);
         return new ImmutableLinkedList(newObj);
+    }
+
+    @Override
+    public String toString() {
+        return "ImmutableLinkedList{" +
+                "objects=" + Arrays.toString(objects) +
+                '}';
     }
 }

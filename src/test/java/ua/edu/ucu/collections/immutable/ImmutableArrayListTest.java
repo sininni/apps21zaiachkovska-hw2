@@ -28,10 +28,10 @@ public class ImmutableArrayListTest extends TestCase {
         assertEquals(arr.add(3, "balt").toString(), "ImmutableArrayList{arr=[are, 23, 2.35, balt]}");
     }
 
-//    @Test (expected = IllegalArgumentException.class)
-//    public void testIndexAdd1() {
-//        arr.add(5, 1);
-//    }
+    @Test (expected = IllegalArgumentException.class)
+    public void testIndexAdd1() {
+        arr.add(5, 1);
+    }
 
     public void testAddAll() {
         Object[] obj = {1, "325"};
@@ -64,9 +64,10 @@ public class ImmutableArrayListTest extends TestCase {
         assertEquals(arr.remove(2).toString(), "ImmutableArrayList{arr=[are, 23]}");
     }
 
-//    public void testSet() {
-//        assertEquals(arr.set(1, "key"), "ImmutableArrayList{arr=[are, key, 2.35]}");
-//    }
+
+    public void testSet() {
+        assertEquals(arr.set(1, "key").toString(), "ImmutableArrayList{arr=[are, key, 2.35]}");
+    }
 
     public void testIndexOf() {
         assertEquals(arr.indexOf(23), 1);
