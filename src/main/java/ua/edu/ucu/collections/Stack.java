@@ -17,6 +17,9 @@ public class Stack {
     }
 
     public Object pop() {
+        if (list.size() == 0) {
+            throw new IllegalArgumentException();
+        }
         Object value = list.getLast();
         list = list.removeLast();
         return value;

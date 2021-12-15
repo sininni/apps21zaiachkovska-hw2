@@ -6,8 +6,10 @@ import static org.junit.Assert.*;
 
 public class QueueTest {
     Queue queue;
+    Queue emptyQueue;
     @Before
     public void setUp() {
+        emptyQueue = new Queue();
         queue = new Queue();
         queue.enqueue(1);
         queue.enqueue(2);
@@ -16,14 +18,22 @@ public class QueueTest {
     }
 
     @Test
-    public void peek() {
+    public void emptyDeque() {
+        try {
+            emptyQueue.dequeue();
+        } catch (IllegalArgumentException i) {}
+
+    }
+
+    @Test
+    public void dequeue() {
         assertEquals(1, queue.dequeue());
         assertEquals(2, queue.dequeue());
         assertEquals(3, queue.dequeue());
     }
 
     @Test
-    public void dequeue() {
+    public void peek() {
         assertEquals(1, queue.peek());
     }
 

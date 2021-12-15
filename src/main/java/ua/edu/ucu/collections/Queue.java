@@ -18,6 +18,9 @@ public class Queue {
     }
 
     public Object dequeue() {
+        if (list.size() == 0) {
+            throw new IllegalArgumentException();
+        }
         Object value = list.getFirst();
         list = list.removeFirst();
         return value;

@@ -7,10 +7,12 @@ import static org.junit.Assert.*;
 
 public class StackTest {
     private Stack stack;
+    private Stack emptyStack;
 
     @Before
     public void setUp() {
         stack = new Stack();
+        emptyStack = new Stack();
         for (int i : new int[]{1, 2, 3, 4, 5}) {
             stack.push(i);
         }
@@ -23,6 +25,13 @@ public class StackTest {
         assertEquals(3, stack.pop());
         assertEquals(2, stack.pop());
         assertEquals(1, stack.pop());
+    }
+
+    @Test
+    public void pop1() {
+        try {
+            emptyStack.pop();
+        } catch (IllegalArgumentException i) {}
     }
 
     @Test
